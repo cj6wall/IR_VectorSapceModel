@@ -113,8 +113,10 @@ result.write("Query,RetrievedDocuments\n")
 
 for i in range(len(list2)):
 	D = {}
-	result.write(list2[i])
+	result.write(list2[i].replace("Query/",""))
+	result.write(",")
 	for j in range(len(list1)):
+		list1[j] = list1[j].replace("Document/","")
 		D.update({list1[j]:PointTable[i,j]})
 	D = sorted(D.items(),key=operator.itemgetter(1),reverse = True)
 	for k in range(len(D)):
